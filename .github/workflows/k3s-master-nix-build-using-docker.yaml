@@ -2,10 +2,15 @@ name: k3s-nix-build-on-demand-docker
 on:
   workflow_dispatch:
     inputs:
-      environmentName:
-        description: Environment name that stores configuration.nix
+      choice:
+        type: choice
         required: true
-        default: default
+        description: Make a choice
+        options:
+        - master
+        - node-1
+        - node-2
+        - node-3
       
 jobs:
   build-default-image:
@@ -40,8 +45,8 @@ jobs:
         path: ./result/sd-image/*.img*
 
   build-master-flake-image:
-    name: Build default image
-    if: ${{ github.event.inputs.environmentName == 'master-flake' }}
+    name: Build Master image
+    if: ${{ github.event.inputs.choice == 'master' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.1
@@ -67,12 +72,12 @@ jobs:
           --option sandbox false
     - uses: actions/upload-artifact@v3
       with:
-        name: master-flake-sd-image.img
+        name: master-sd-image.img
         path: ./result/sd-image/*.img*
 
   build-custom-image:
     name: Build custom image
-    if: ${{ github.event.inputs.environmentName != 'default' }}
+    if: ${{ github.event.inputs.choice != 'master' }}
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.environmentName }}
