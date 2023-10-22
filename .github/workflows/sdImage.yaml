@@ -1,4 +1,4 @@
-name: k3s-nix-build-on-demand-docker
+name: sd-image
 on:
   workflow_dispatch:
     inputs:
