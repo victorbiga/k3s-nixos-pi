@@ -14,7 +14,7 @@ cp image from container
 docker cp a7815e286ed0:/nix/store/s31baywpx15yk7i4zq6zd6byg9lvbi43-nixos-sd-image-23.11.20231015.12bdeb0-aarch64-linux.img/sd-image/nixos-sd-image-23.11.20231015.12bdeb0-aarch64-linux.img.zst .
 ```
 
-decompress zst
+decompress with zstd https://facebook.github.io/zstd/ 
 ```bash
 zstd --decompress "nixos-sd-image-23.11.20231015.12bdeb0-aarch64-linux.img.zst"
 ```
