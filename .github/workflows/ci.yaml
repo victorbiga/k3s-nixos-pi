@@ -37,7 +37,7 @@ jobs:
           sarif-file: sarif.output.json
           summary: true
           write-comment: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+ #         github-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Upload SARIF result
         id: upload-sarif
