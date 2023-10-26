@@ -1,16 +1,17 @@
 name: ci
 
 on:
-  push:
+  pull_request_target:
     branches:
-      - 'master'
-
-env:
-  IMAGE_NAME: ${{ github.repository }}
+      - master
 
 jobs:
   docker:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
       -
         name: Set up QEMU
@@ -29,21 +30,22 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: victorbiga/${{ env.IMAGE_NAME }}:latest
+          tags: victorbiga/sd-image-builder:latest
         
       - name: Docker Scout
         id: docker-scout-environment
         uses: docker/scout-action@v1
         with:
           command: cves,recommendations,compare
-          image: victorbiga/${{ env.IMAGE_NAME }}:latest
+          image: victorbiga/sd-image-builder:latest
           sarif-file: sarif.output.json
           summary: true
           write-comment: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+ #         github-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Upload SARIF result
         id: upload-sarif
+        if: success() || failure()
  #       if: ${{ github.event_name != 'pull_request_target' }}
         uses: github/codeql-action/upload-sarif@v2
         with:
