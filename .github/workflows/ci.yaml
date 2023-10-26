@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -29,14 +26,14 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: victorbiga/sd-image-builder:latest
         
       - name: Docker Scout
         id: docker-scout-environment
         uses: docker/scout-action@v1
         with:
           command: cves,recommendations,compare
-          image: victorbiga/${{ env.IMAGE_NAME }}:latest
+          image: victorbiga/sd-image-builder:latest
           sarif-file: sarif.output.json
           summary: true
           write-comment: true
