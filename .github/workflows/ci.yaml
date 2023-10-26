@@ -5,6 +5,9 @@ on:
     branches:
       - 'master'
 
+env:
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -26,4 +29,22 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: victorbiga/sd0image-builder:latest
+          tags: victorbiga/${{ env.IMAGE_NAME }}:latest
+        
+      - name: Docker Scout
+        id: docker-scout-environment
+        uses: docker/scout-action@v1
+        with:
+          command: cves,recommendations,compare
+          image: victorbiga/${{ env.IMAGE_NAME }}:latest
+          sarif-file: sarif.output.json
+          summary: true
+          write-comment: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload SARIF result
+        id: upload-sarif
+ #       if: ${{ github.event_name != 'pull_request_target' }}
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: sarif.output.json      
