@@ -2,7 +2,7 @@
   description = "NixOS Raspberry Pi configuration flake";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   outputs = { self, nixpkgs, nixos-hardware }: {
-    nixosConfigurations.rpi = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.master-node = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"

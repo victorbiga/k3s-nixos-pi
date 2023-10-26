@@ -19,4 +19,4 @@ decompress with zstd https://facebook.github.io/zstd/
 zstd --decompress "nixos-sd-image-23.11.20231015.12bdeb0-aarch64-linux.img.zst"
 ```
 
-Use BalenaEtcher https://etcher.balena.io/ or dd to flash micro sd card
+Use BalenaEtcher https://etcher.balena.io/ or dd https://osxdaily.com/2018/04/18/write-image-file-sd-card-dd-command-line/ to flash micro sd card
