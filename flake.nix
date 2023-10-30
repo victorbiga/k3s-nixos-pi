@@ -2,7 +2,7 @@
   description = "NixOS Raspberry Pi configuration flake";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   outputs = { self, nixpkgs, nixos-hardware }: {
-    nixosConfigurations.master-node = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.kube-node-1 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
@@ -58,13 +58,13 @@
             };
 
             networking = {
-              hostName = "kube-node-1"; # Define your hostname.
+              hostName = "kube-node-2"; # Define your hostname.
               useDHCP = false;
               defaultGateway = "192.168.50.1";
               nameservers = [ "192.168.50.215" ];
               interfaces.end0.useDHCP = false;
               interfaces.end0.ipv4.addresses = [{
-                address = "192.168.50.177";
+                address = "192.168.50.178";
                 prefixLength = 24;
               }];
             };
@@ -81,6 +81,7 @@
                 "cgroup_enable=cpuset" "cgroup_memory=1" "cgroup_enable=memory"
               ];
             };
+            environment.systemPackages = [ pkgs.git ];
             nix = {
               package = pkgs.nixFlakes;
               extraOptions = ''
@@ -93,3 +94,4 @@
     };
   };
 }
+
