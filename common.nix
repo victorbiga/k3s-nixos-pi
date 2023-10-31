@@ -35,9 +35,9 @@
     # Enables the generation of /boot/extlinux/extlinux.conf
     loader.generic-extlinux-compatible.enable = true;
     kernelPackages = pkgs.linuxPackages_rpi4;
-    initrd.availableKernelModules = nixpkgs.lib.mkForce [ "sdhci_pci" "xhci-pci-renesas" "reset-raspberrypi" "ext2" "ext4" ];
-    initrd.supportedFilesystems = nixpkgs.lib.mkForce [ "ext4" ];
-    supportedFilesystems = nixpkgs.lib.mkForce [ "ext4" ];
+    initrd.availableKernelModules = pkgs.lib.mkForce [ "sdhci_pci" "xhci-pci-renesas" "reset-raspberrypi" "ext2" "ext4" ];
+    initrd.supportedFilesystems = pkgs.lib.mkForce [ "ext4" ];
+    supportedFilesystems = pkgs.lib.mkForce [ "ext4" ];
     kernelParams = [
       "cgroup_enable=cpuset"
       "cgroup_memory=1"
