@@ -42,6 +42,7 @@
               k3s = {
                 enable = true;
                 role = "server";
+                tokenFile = "/etc/k3s/token";
               };
             };
 
@@ -50,6 +51,10 @@
             };
 
             networking = {
+              firewall = {
+                allowedTCPPorts = [ 6443 ];
+                enable = true;
+              };
               hostName = "kube-node-1"; # Define your hostname.
               useDHCP = false;
               defaultGateway = "192.168.50.1";
@@ -125,7 +130,8 @@
               k3s = {
                 enable = true;
                 role = "agent";
-                serverAddr = "192.168.50.177";
+                serverAddr = "https://192.168.50.177:6443";
+                tokenFile = "/etc/k3s/token";
               };
             };
 
