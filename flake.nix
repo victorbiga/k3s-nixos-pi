@@ -32,14 +32,6 @@
               ];
             };
 
-            programs.zsh = {
-              enable = true;
-              ohMyZsh = {
-                enable = true;
-                theme = "bira";
-              };
-            };
-
             security = {
               sudo.wheelNeedsPassword = false;
             };
@@ -123,14 +115,6 @@
               ];
             };
 
-            programs.zsh = {
-              enable = true;
-              ohMyZsh = {
-                enable = true;
-                theme = "bira";
-              };
-            };
-
             security = {
               sudo.wheelNeedsPassword = false;
             };
@@ -140,7 +124,8 @@
               journald.console = "/dev/tty6";
               k3s = {
                 enable = true;
-                role = "server";
+                role = "agent";
+                serverAddr = "192.168.50.177";
               };
             };
 
