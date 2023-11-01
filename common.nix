@@ -45,6 +45,7 @@
     firewall = {
       enable = true;
       trustedInterfaces = [ "cni0" ];
+      allowedTCPPorts = [ 6443, 10250 ];
     };
     useDHCP = false;
     defaultGateway = "192.168.50.1";
