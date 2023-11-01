@@ -19,7 +19,8 @@
 
             networking = {
               firewall = {
-                allowedTCPPorts = [ 6443 10250 ];
+                allowedTCPPorts = [ 6443 ];
+                allowedUDPPorts = [ 8472 ];
               };
               hostName = "kube-node-1"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{

@@ -44,7 +44,8 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 6443 10250 ];
+      allowedTCPPorts = [ 6443 ];
+      allowedUDPPorts = [ 8472 ];
     };
     useDHCP = false;
     defaultGateway = "192.168.50.1";
