@@ -28,7 +28,6 @@
     k3s = {
       enable = true;
       tokenFile = "/etc/k3s/token";
-      extraFlags = "--no-deploy traefik";
     };
   };
 
@@ -45,7 +44,6 @@
   networking = {
     firewall = {
       enable = true;
-      trustedInterfaces = [ "cni0" ];
       allowedTCPPorts = [ 6443 10250 ];
     };
     useDHCP = false;

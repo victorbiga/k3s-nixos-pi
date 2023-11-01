@@ -20,7 +20,6 @@
             networking = {
               firewall = {
                 allowedTCPPorts = [ 6443 10250 ];
-                trustedInterfaces = [ "cni0" ];
               };
               hostName = "kube-node-1"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
