@@ -47,7 +47,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 6443 ];
+      allowedTCPPorts = [ 6443 10250 ];
       allowedUDPPorts = [ 8472 ];
     };
     useDHCP = false;
