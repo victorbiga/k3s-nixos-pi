@@ -24,6 +24,7 @@
               hostName = "kube-node-1"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.177";
+                prefixLength = 24;
               }];
             };
           };
@@ -50,6 +51,7 @@
               hostName = "kube-node-2"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.178";
+                prefixLength = 24;
               }];
             };
           };
@@ -75,6 +77,7 @@
               hostName = "kube-node-3"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.179";
+                prefixLength = 24;
               }];
             };
           };
