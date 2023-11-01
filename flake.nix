@@ -14,12 +14,15 @@
             services = {
               k3s = {
                 role = "server";
+                extraFlags = toString [
+                  "--disable=traefik"
+                ];
               };
             };
 
             networking = {
               firewall = {
-                allowedTCPPorts = [ 6443 ];
+                allowedTCPPorts = [ 6443 10250 ];
                 allowedUDPPorts = [ 8472 ];
               };
               hostName = "kube-node-1"; # Define your hostname.
