@@ -28,6 +28,7 @@
     k3s = {
       enable = true;
       tokenFile = "/etc/k3s/token";
+      extraFlags = "--no-deploy traefik";
     };
   };
 
