@@ -20,16 +20,10 @@
             networking = {
               firewall = {
                 allowedTCPPorts = [ 6443 ];
-                enable = true;
               };
               hostName = "kube-node-1"; # Define your hostname.
-              useDHCP = false;
-              defaultGateway = "192.168.50.1";
-              nameservers = [ "192.168.50.215" ];
-              interfaces.end0.useDHCP = false;
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.177";
-                prefixLength = 24;
               }];
             };
           };
@@ -54,13 +48,8 @@
             };
             networking = {
               hostName = "kube-node-2"; # Define your hostname.
-              useDHCP = false;
-              defaultGateway = "192.168.50.1";
-              nameservers = [ "192.168.50.215" ];
-              interfaces.end0.useDHCP = false;
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.178";
-                prefixLength = 24;
               }];
             };
           };
@@ -84,13 +73,8 @@
             };
             networking = {
               hostName = "kube-node-3"; # Define your hostname.
-              useDHCP = false;
-              defaultGateway = "192.168.50.1";
-              nameservers = [ "192.168.50.215" ];
-              interfaces.end0.useDHCP = false;
               interfaces.end0.ipv4.addresses = [{
                 address = "192.168.50.179";
-                prefixLength = 24;
               }];
             };
           };

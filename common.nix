@@ -39,6 +39,19 @@
     stateVersion = "23.05";
   };
 
+  networking = {
+    firewall = {
+      enable = true;
+    };
+    useDHCP = false;
+    defaultGateway = "192.168.50.1";
+    nameservers = [ "192.168.50.215" ];
+    interfaces.end0.useDHCP = false;
+    interfaces.end0.ipv4.addresses = [{
+      prefixLength = 24;
+    }];
+  };
+
   boot = {
     loader.grub.enable = false;
     # Enables the generation of /boot/extlinux/extlinux.conf
