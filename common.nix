@@ -22,6 +22,15 @@
     ];
   };
 
+  services = {
+    openssh.enable = true;
+    journald.console = "/dev/tty6";
+    k3s = {
+      enable = true;
+      tokenFile = "/etc/k3s/token";
+    };
+  };
+
   security = {
     sudo.wheelNeedsPassword = false;
   };

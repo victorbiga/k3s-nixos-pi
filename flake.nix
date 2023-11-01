@@ -12,12 +12,8 @@
         ({ pkgs, ... }: {
           config = {
             services = {
-              openssh.enable = true;
-              journald.console = "/dev/tty6";
               k3s = {
-                enable = true;
                 role = "server";
-                tokenFile = "/etc/k3s/token";
               };
             };
 
@@ -51,13 +47,9 @@
         ({ pkgs, ... }: {
           config = {
             services = {
-              openssh.enable = true;
-              journald.console = "/dev/tty6";
               k3s = {
-                enable = true;
                 role = "agent";
                 serverAddr = "https://192.168.50.177:6443";
-                tokenFile = "/etc/k3s/token";
               };
             };
             networking = {
@@ -85,13 +77,9 @@
         ({ pkgs, ... }: {
           config = {
             services = {
-              openssh.enable = true;
-              journald.console = "/dev/tty6";
               k3s = {
-                enable = true;
                 role = "agent";
                 serverAddr = "https://192.168.50.177:6443";
-                tokenFile = "/etc/k3s/token";
               };
             };
             networking = {
