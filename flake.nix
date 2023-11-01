@@ -1,6 +1,6 @@
 {
   description = "NixOS Raspberry Pi configuration flake";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  inputs.nixos-hardware.url = "github:NixOS/nixpkgs/d82801fc943ca518efb7a913d89b4d2d8ee224ae";
   outputs = { self, nixpkgs, nixos-hardware }: {
     nixosConfigurations.kube-node-1 = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
