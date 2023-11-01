@@ -35,6 +35,8 @@
     sudo.wheelNeedsPassword = false;
   };
 
+  systemd.services.k3s.path = [ pkgs.ipset ];
+
   system = {
     stateVersion = "23.05";
   };
