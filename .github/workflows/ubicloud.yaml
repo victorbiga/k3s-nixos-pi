@@ -11,7 +11,7 @@ jobs:
   build-default-image:
     name: Build default image
     if: ${{ github.event.inputs.environmentName == 'default' }}
-    runs-on: ubicloud
+    runs-on: ubuntu
     steps:
     - uses: actions/checkout@v3.5.3
     - uses: cachix/install-nix-action@v20
@@ -42,7 +42,7 @@ jobs:
   build-custom-image:
     name: Build custom image
     if: ${{ github.event.inputs.environmentName != 'default' }}
-    runs-on: ubicloud
+    runs-on: ubuntu
     environment:
       name: ${{ github.event.inputs.environmentName }}
     steps:
