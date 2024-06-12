@@ -66,6 +66,10 @@
       "cgroup_memory=1"
       "cgroup_enable=memory"
     ];
+    kernelModules = [
+      "ceph"
+      "rbd"
+    ];
   };
   environment.systemPackages = [ pkgs.git ];
   nix = {
