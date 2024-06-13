@@ -1,6 +1,6 @@
 FROM nixos/nix
 
-WORKDIR /sd-image
+WORKDIR sd-image
 
 # Copy necessary files for the build
 COPY flake.nix .
