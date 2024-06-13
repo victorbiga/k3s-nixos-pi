@@ -49,6 +49,7 @@
 
   boot = {
     loader.grub.enable = false;
+    # Enables the generation of /boot/extlinux/extlinux.conf
     loader.generic-extlinux-compatible.enable = true;
     kernelPackages = pkgs.linuxPackages_rpi4;
     initrd.availableKernelModules = pkgs.lib.mkForce [ "sdhci_pci" "xhci-pci-renesas" "reset-raspberrypi" "ext2" "ext4" ];
