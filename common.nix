@@ -64,7 +64,7 @@
   };
 
   environment.systemPackages = [ pkgs.git ];
-  
+
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
