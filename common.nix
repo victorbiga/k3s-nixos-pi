@@ -27,7 +27,7 @@
       enable = true;
       tokenFile = "/etc/k3s/token";
     };
-  };  
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
