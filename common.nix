@@ -23,6 +23,10 @@
   services = {
     openssh.enable = true;
     journald.console = "/dev/tty6";
+    openiscsi = {
+      enable = true;
+      name = "${config.networking.hostName}-initiatorhost";
+    };
     k3s = {
       enable = true;
       tokenFile = "/etc/k3s/token";
