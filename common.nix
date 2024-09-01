@@ -64,7 +64,7 @@
       "cgroup_memory=1"
       "cgroup_enable=memory"
     ];
-    kernelModules = [ "ceph" "rbd" ];
+    kernelModules = [ "rbd" ];
   };
 
   environment.systemPackages = [ pkgs.git pkgs.nfs-utils ];
