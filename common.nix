@@ -25,7 +25,7 @@
     journald.console = "/dev/tty6";
     openiscsi = {
       enable = true;
-      name = "${config.networking.hostName}-initiatorhost";
+      name = "${config.networking.hostName}";
     };
     k3s = {
       enable = true;
