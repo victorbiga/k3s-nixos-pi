@@ -27,6 +27,7 @@
       enable = true;
       name = "${config.networking.hostName}";
     };
+    rpcbind.enable = true;
     k3s = {
       enable = true;
       tokenFile = "/etc/k3s/token";
@@ -58,7 +59,7 @@
     kernelPackages = pkgs.linuxPackages_rpi4;
     initrd.availableKernelModules = pkgs.lib.mkForce [ "sdhci_pci" "xhci-pci-renesas" "reset-raspberrypi" "ext2" "ext4" ];
     initrd.supportedFilesystems = pkgs.lib.mkForce [ "ext4" ];
-    supportedFilesystems = pkgs.lib.mkForce [ "ext4" ];
+    supportedFilesystems = pkgs.lib.mkForce [ "ext4" "nfs" ];
     kernelParams = [
       "cgroup_enable=cpuset"
       "cgroup_memory=1"
