@@ -23,7 +23,7 @@
             networking = {
               hostName = "kube-node-1"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
-                address = "192.168.50.177";
+                address = "10.0.0.21";
                 prefixLength = 24;
               }];
             };
@@ -44,13 +44,13 @@
             services = {
               k3s = {
                 role = "agent";
-                serverAddr = "https://192.168.50.177:6443";
+                serverAddr = "https://10.0.0.21:6443";
               };
             };
             networking = {
               hostName = "kube-node-2"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
-                address = "192.168.50.178";
+                address = "10.0.0.22";
                 prefixLength = 24;
               }];
             };
@@ -70,13 +70,13 @@
             services = {
               k3s = {
                 role = "agent";
-                serverAddr = "https://192.168.50.177:6443";
+                serverAddr = "https://10.0.0.21:6443";
               };
             };
             networking = {
               hostName = "kube-node-3"; # Define your hostname.
               interfaces.end0.ipv4.addresses = [{
-                address = "192.168.50.179";
+                address = "10.0.0.23";
                 prefixLength = 24;
               }];
             };
