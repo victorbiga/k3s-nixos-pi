@@ -47,8 +47,8 @@
       allowedUDPPorts = [ 8472 ];
     };
     useDHCP = false;
-    defaultGateway = "192.168.50.1";
-    nameservers = [ "192.168.50.215" ];
+    defaultGateway = "10.0.0.1";
+    nameservers = [ "10.0.0.1" ];
     interfaces.end0.useDHCP = false;
   };
 
