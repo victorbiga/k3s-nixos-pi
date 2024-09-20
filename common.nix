@@ -42,7 +42,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:victorbiga/k3s-nixos-pi";
-    dates = "minutely";
+    dates = "11:20:00";
   };
 
 
