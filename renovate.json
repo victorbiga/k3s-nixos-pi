@@ -3,18 +3,10 @@
   "extends": [
     "config:base"
   ],
-  "dependencyDashboardApproval": true,
-  "labels": ["dependencies"],
-  "commitMessagePrefix": "chore(deps): \uD83D\uDC77 ",
-  "separateMajorMinor": false,
-  "packageRules": [
-      {
-        "addLabels": ["github-actions"],
-        "matchManagers": [
-          "github-actions"
-        ],
-        "automerge": false,
-        "groupName": "github Actions updates"
-      }
-  ]
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  }
 }
