@@ -41,8 +41,8 @@
   system.stateVersion = "24.05";
   system.autoUpgrade = {
     enabled = true;
-    flake = "github:victorbiga/k3s-nixos-pi"
-    dates = "minutely"
+    flake = "github:victorbiga/k3s-nixos-pi";
+    dates = "minutely";
   };
 
 
