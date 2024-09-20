@@ -1,7 +1,12 @@
 name: Test flake
 on:
-  pull_request:
-    types: [opened, reopened, synchronize ]
+  pull_request_target:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize
+      - edited
 
 jobs:
   build:
