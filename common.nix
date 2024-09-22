@@ -39,12 +39,6 @@
   systemd.services.k3s.path = [ pkgs.ipset ];
 
   system.stateVersion = "24.05";
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:victorbiga/k3s-nixos-pi";
-    dates = "11:20";
-  };
-
 
   networking = {
     firewall = {
@@ -57,6 +51,8 @@
     nameservers = [ "10.0.0.1" ];
     interfaces.end0.useDHCP = false;
   };
+
+  hardware.raspberry-pi."4".i2c1.enable = true;
 
   boot = {
     loader.grub.enable = false;
@@ -74,7 +70,7 @@
     kernelModules = [ "rbd" ];
   };
 
-  environment.systemPackages = with pkgs; [ git nfs-utils libraspberrypi htop ];
+  environment.systemPackages = with pkgs; [ git nfs-utils libraspberrypi go i2c-tools ];
   environment.variables = {
     PATH = [
     "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/wrappers/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
