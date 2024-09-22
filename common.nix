@@ -40,6 +40,12 @@
 
   system.stateVersion = "24.05";
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:victorbiga/k3s-nixos-pi";
+    dates = "11:20";
+  };
+
   networking = {
     firewall = {
       enable = true;
