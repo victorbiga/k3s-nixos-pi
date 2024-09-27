@@ -85,5 +85,32 @@
         })
       ];
     };
+
+    nixosConfigurations.kube-node-4 = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        nixos-hardware.nixosModules.raspberry-pi-4
+        (nixpkgs + "/nixos/modules/profiles/minimal.nix")
+        ./common.nix
+        ({ pkgs, ... }: {
+          config = {
+            services = {
+              k3s = {
+                role = "agent";
+                serverAddr = "https://10.0.0.21:6443";
+              };
+            };
+            networking = {
+              hostName = "kube-node-4"; # Define your hostname.
+              interfaces.end0.ipv4.addresses = [{
+                address = "10.0.0.24";
+                prefixLength = 24;
+              }];
+            };
+          };
+        })
+      ];
+    };
   };
 }
