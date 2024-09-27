@@ -2,7 +2,10 @@
 
 Build Docker image for building micro sd card raspberry pi 4 nixos images
 ```bash
-docker build -t sd-image-builder . --platform linux/arm64
+docker build -t sd-image-builder . --platform linux/arm64 --build-arg NODE_NAME=kube-node-1 .
+docker build -t sd-image-builder . --platform linux/arm64 --build-arg NODE_NAME=kube-node-2 .
+docker build -t sd-image-builder . --platform linux/arm64 --build-arg NODE_NAME=kube-node-3 .
+docker build -t sd-image-builder . --platform linux/arm64 --build-arg NODE_NAME=kube-node-4 .
 ```
 Build raspberry pi 4 nixos image
 ```bash
