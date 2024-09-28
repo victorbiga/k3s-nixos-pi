@@ -5,6 +5,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # User
+  users.defaultUserShell = pkgs.zsh;
   users.users.victor = {
     hashedPassword = "$6$1x45qQgJwmCXXhbh$RQrnocus1l1NbKMbL17/9HyQ8RBarb.W33JBAQMjXZWBSs0YGsJBGljzHDJGMrs0KRp7gjiE8rgKbJfbYZlS50";
     isNormalUser = true;
@@ -79,6 +80,23 @@
     PATH = [
     "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/wrappers/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
     ];
+  };
+
+  programs = {
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      ohMyZsh = {
+        enable = true;
+     };
+    };
+    neovim = {
+      defaultEditor = true;
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+    };
   };
 
   nix = {
