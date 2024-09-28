@@ -49,7 +49,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 6443 10250 10251 ];
+      allowedTCPPorts = [ 80 443 6443 10250 10251 9100 ];
       allowedUDPPorts = [ 8472 ];
     };
     useDHCP = false;
