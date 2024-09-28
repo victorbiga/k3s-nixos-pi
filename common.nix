@@ -75,7 +75,7 @@
     kernelModules = [ "rbd" ];
   };
 
-  environment.systemPackages = with pkgs; [ git nfs-utils libraspberrypi htop ];
+  environment.systemPackages = with pkgs; [ git nfs-utils libraspberrypi htop fzf ];
   environment.variables = {
     PATH = [
     "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/wrappers/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
@@ -89,6 +89,7 @@
       syntaxHighlighting.enable = true;
       ohMyZsh = {
         enable = true;
+      plugins = [ "fzf" ];
      };
     };
     neovim = {
