@@ -1,13 +1,16 @@
+# Use the NixOS base image
 FROM nixos/nix
 
-WORKDIR sd-image
+# Set the working directory
+WORKDIR /sd-image
 
 # Copy necessary files for the build
 COPY flake.nix .
 COPY flake.lock .
-COPY common.nix .
+COPY shared/ ./shared/
+COPY nodes/ ./nodes/
 
-# Define a build argument
+# Define a build argument for the node name
 ARG NODE_NAME
 ENV NODE_NAME=${NODE_NAME}
 
