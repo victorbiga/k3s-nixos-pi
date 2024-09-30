@@ -14,7 +14,7 @@
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
         nixos-hardware.nixosModules.raspberry-pi-4
         "${nixpkgs}/nixos/modules/profiles/minimal.nix"
-        ./common.nix  # Common configurations for all nodes
+        ./shared/common.nix  # Common configurations for all nodes
         nodeConfig  # Specific node configuration
       ];
     };
