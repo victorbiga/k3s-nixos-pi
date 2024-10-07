@@ -52,7 +52,7 @@
     autoUpgrade = {
       enable = true;
       flake = "github:victorbiga/k3s-nixos-pi";
-      dates = "11:20";
+      dates = "11:00";
     };
   };
 
