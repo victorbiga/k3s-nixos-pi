@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   # bcm2711 for rpi 3, 3+, 4, zero 2 w
   # bcm2712 for rpi 5
   # See the docs at:
@@ -21,6 +21,15 @@
         };
       };
     };
+  };
+
+  # Boot settings
+  boot = {
+    kernelParams = [
+      "cgroup_enable=cpuset"
+      "cgroup_memory=1"
+      "cgroup_enable=memory"
+    ];
   };
 
   system.stateVersion = "24.05";
