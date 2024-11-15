@@ -15,7 +15,7 @@
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
         nixos-hardware.nixosModules.raspberry-pi-4
         "${nixpkgs}/nixos/modules/profiles/minimal.nix"
-        ./shared/common.nix  # Common configurations for all nodes
+        ./shared/config.nix  # Common configurations for all nodes
         ./shared/rpi4.nix  # Common configurations for all nodes
         nodeConfig  # Specific node configuration
       ];
@@ -25,7 +25,7 @@
       modules = [
         raspberry-pi-nix.nixosModules.raspberry-pi
         "${nixpkgs}/nixos/modules/profiles/minimal.nix"
-        ./shared/common.nix  # Common configurations for all nodes
+        ./shared/config.nix  # Common configurations for all nodes
         ./shared/rpi5.nix
         nodeConfig  # Specific node configuration
       ];
