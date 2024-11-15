@@ -6,7 +6,7 @@
   raspberry-pi-nix.board = "bcm2712";
 
   hardware = {
-    ic2 = {
+    i2c = {
       enable = true;
     };
     bluetooth.enable = true;
