@@ -36,6 +36,7 @@
       kube-node-2 = self.mkNode ./nodes/kube-node-2.nix;
       kube-node-3 = self.mkNode ./nodes/kube-node-3.nix;
       kube-node-4 = self.mkNode ./nodes/kube-node-4.nix;
+      kube-node-5 = self.mkNode5 ./nodes/kube-node-5.nix;
       kube-node-6 = self.mkNode5 ./nodes/kube-node-6.nix;
     };
   };
