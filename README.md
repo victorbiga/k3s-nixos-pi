@@ -1,6 +1,6 @@
 # k3s-nixos-pi
 
-This project is focused on building NixOS images for Raspberry Pi 4, configured to join a k3s Kubernetes cluster.
+This project is focused on building NixOS images for Raspberry Pi 4 and Raspberry Pi 5, configured to join a k3s Kubernetes cluster.
 
 ---
 
