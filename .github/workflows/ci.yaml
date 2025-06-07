@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile
+        run: docker build --build-arg NODE_NAME=kube-node-1 --build-arg DATE_STAMP=$(date +%Y-%m-%d) . --file Dockerfile
       - name: Run container
         run: docker run -d --name ci-container my-nixos-sd-image
       - name: Check NixOS version
