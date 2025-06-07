@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          platform: linux/arm64
+
+      - name: Get pull request number
+        id: get_pr_number
+        run: echo "pr_number=${GITHUB_REF#refs/pull/}" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          attests: type=sbom
+          platforms: linux/arm64
+          build-args: |-
+            NODE_NAME=kube-node-1
+            DATE_STAMP=TODAY
+          #build-args: NODE_NAME=kube-node-1, DATE_STAMP=$(date +%Y-%m-%d)
+          tags: ci-build:${{ steps.get_pr_number.outputs.pr_number }}
+
+      - name: Run container
+        run: docker run -d --name ci-container ci-build:${{ steps.get_pr_number.outputs.pr_number }}
+      - name: Check NixOS version
+        run: docker exec ci-container nixos-version
+      - name: Stop container
+        if: always()
+        run: docker stop ci-container || true
