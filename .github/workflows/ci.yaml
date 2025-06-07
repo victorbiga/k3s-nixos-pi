@@ -9,6 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
+      - uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-23.05
+          extra_nix_config: |
+            extra-platforms = aarch64-linux
+      - name: Check nix.conf
+        run: cat /etc/nix/nix.conf
+      - name: Register binfmt
+        run: |
+          docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+      - name: Test binfmt availability
+        run: |
+          cat /proc/sys/fs/binfmt_misc/qemu-aarch64
       - name: Build the Docker image
         run: docker build --build-arg NODE_NAME=kube-node-1 --build-arg DATE_STAMP=$(date +%Y-%m-%d) . --file Dockerfile
       - name: Run container
