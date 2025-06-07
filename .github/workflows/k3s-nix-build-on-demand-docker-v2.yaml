@@ -2,20 +2,27 @@ name: k3s-nix-build-on-demand-docker-v2
 on:
   workflow_dispatch:
     inputs:
-      nodeName:
+      nodeNames:
         type: choice
         required: true
-        description: Choose which node to build
+        description: Choose which nodes to build
         options:
-          - master
           - kube-node-1
           - kube-node-2
           - kube-node-3
+          - kube-node-4
+          - kube-node-5
+          - kube-node-6
+          - kube-node-7
+        multiple: true
 
 jobs:
   build-node-image:
     name: Build node image
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nodeName: ${{ github.event.inputs.nodeNames }}
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: cachix/install-nix-action@v31
@@ -33,13 +40,19 @@ jobs:
           cat /proc/sys/fs/binfmt_misc/qemu-aarch64
       - name: Build SD Image
         run: |
-          docker build --build-arg NODE_NAME=${{ github.event.inputs.nodeName }} -t my-nixos-sd-image .
+          docker build --build-arg NODE_NAME=${{ matrix.nodeName }} -t my-nixos-sd-image .
+      - name: Run container
+        run: |
+          docker run -d --name my-container my-nixos-sd-image
       - name: Extract image
         run: |
-          container_id=$(docker create my-nixos-sd-image)
-          docker cp $container_id:$(find /sd-image/result -type f -name 'nixos-sd-image*') .
-          docker rm $container_id
-      - uses: actions/upload-artifact@v4
+          container_id=$(docker ps -q -f name=my-container)
+          docker cp $container_id:/nix/store/*-nixos-image-sd-card-*-aarch64-linux.img.zst .
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: sd-image.img
-          path: ./nixos-sd-image*
+          name: sd-image-${{ matrix.nodeName }}.img.zst
+          path: nixos-image-sd-card-*-aarch64-linux.img.zst
+      - name: Stop container
+        if: always()
+        run: docker stop my-container || true
