@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile
+      - name: Run container
+        run: docker run -d --name ci-container my-nixos-sd-image
+      - name: Check NixOS version
+        run: docker exec ci-container nixos-version
+      - name: Stop container
+        if: always()
+        run: docker stop ci-container || true
