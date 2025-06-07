@@ -4,6 +4,7 @@ ARG NODE_NAME
 ARG DATE_STAMP
 ENV NODE_NAME=${NODE_NAME}
 ENV DATE_STAMP=${DATE_STAMP}
+ENV NIX_BUILD_HOST=aarch64-linux
 COPY flake.nix .
 COPY flake.lock .
 COPY shared/ ./shared/
