@@ -17,7 +17,7 @@ jobs:
     name: Build Master image
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v5.0.0
     - uses: cachix/install-nix-action@v31
       with:
         nix_path: nixpkgs=channel:nixos-23.05
