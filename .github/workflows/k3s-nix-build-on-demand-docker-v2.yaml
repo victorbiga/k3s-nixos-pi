@@ -49,7 +49,7 @@ jobs:
           container_id=$(docker ps -q -f name=my-container)
           docker cp $container_id:/nix/store/*-nixos-image-sd-card-*-aarch64-linux.img.zst .
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sd-image-${{ matrix.nodeName }}.img.zst
           path: nixos-image-sd-card-*-aarch64-linux.img.zst
