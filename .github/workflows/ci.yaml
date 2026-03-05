@@ -24,7 +24,7 @@ jobs:
         run: echo "pr_number=${GITHUB_REF#refs/pull/}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           attests: type=sbom
           platforms: linux/arm64
